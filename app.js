@@ -41,9 +41,7 @@ const addTask = function () {
   newTaskInput.value = '';
 };
 
-const toggleEditMode = function () {
-  const listItem = this.parentNode;
-
+const toggleEditMode = function (listItem) {
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
   const editButton = listItem.querySelector('.edit');
@@ -59,15 +57,13 @@ const toggleEditMode = function () {
   listItem.classList.toggle('edit-mode');
 };
 
-const deleteTask = function () {
-  const listItem = this.parentNode;
+const deleteTask = function (listItem) {
   const taskList = listItem.parentNode;
   taskList.removeChild(listItem);
 };
 
-const toggleTaskCompletion = function () {
-  const listItem = this.parentNode;
-  const targetList = this.checked ? completedTaskList : incompleteTaskList;
+const setTaskCompleted = function (listItem, isCompleted) {
+  const targetList = isCompleted ? completedTaskList : incompleteTaskList;
   targetList.appendChild(listItem);
 };
 
@@ -78,9 +74,9 @@ const bindTaskEvents = function (listItem) {
   const editButton = listItem.querySelector('button.edit');
   const deleteButton = listItem.querySelector('button.delete');
 
-  editButton.onclick = toggleEditMode;
-  deleteButton.onclick = deleteTask;
-  checkbox.onchange = toggleTaskCompletion;
+  editButton.onclick = () => toggleEditMode(listItem);
+  deleteButton.onclick = () => deleteTask(listItem);
+  checkbox.onchange = () => setTaskCompleted(listItem, checkbox.checked);
 };
 
 for (const listItem of [
