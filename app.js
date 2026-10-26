@@ -4,35 +4,30 @@ const incompleteTaskList = document.getElementById('incomplete-tasks');
 const completedTaskList = document.getElementById('completed-tasks');
 
 const createTaskElement = function (taskText) {
-  const listItem = document.createElement('li');
-
   const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+
   const label = document.createElement('label');
-  const editInput = document.createElement('input');
-  const editButton = document.createElement('button');
-
-  const deleteButton = document.createElement('button');
-  const deleteIcon = document.createElement('img');
-
   label.innerText = taskText; //innerText encodes special characters, HTML does not.
   label.className = 'task';
 
-  checkbox.type = 'checkbox';
+  const editInput = document.createElement('input');
   editInput.type = 'text';
   editInput.className = 'task';
 
+  const editButton = document.createElement('button');
   editButton.innerText = 'Edit';
   editButton.className = 'edit';
 
-  deleteButton.className = 'delete';
+  const deleteIcon = document.createElement('img');
   deleteIcon.src = './remove.svg';
+
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete';
   deleteButton.appendChild(deleteIcon);
 
-  listItem.appendChild(checkbox);
-  listItem.appendChild(label);
-  listItem.appendChild(editInput);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
+  const listItem = document.createElement('li');
+  listItem.append(checkbox, label, editInput, editButton, deleteButton);
   return listItem;
 };
 
