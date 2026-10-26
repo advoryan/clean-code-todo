@@ -9,11 +9,11 @@ const createTaskElement = function (taskText) {
 
   const label = document.createElement('label');
   label.innerText = taskText;
-  label.className = 'task';
+  label.className = 'task-text';
 
   const editInput = document.createElement('input');
   editInput.type = 'text';
-  editInput.className = 'task';
+  editInput.className = 'task-text';
 
   const editButton = document.createElement('button');
   editButton.innerText = 'Edit';

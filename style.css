@@ -25,11 +25,11 @@ body {
   width: 500px;
   margin: 0 auto 0;
 }
-.task {
+.task-text {
   width: 56%;
   flex-grow: 1;
 }
-.task-row-wrapper {
+.new-task-row {
   display: flex;
 }
 ul {
