@@ -8,7 +8,7 @@ const createTaskElement = function (taskText) {
   checkbox.type = 'checkbox';
 
   const label = document.createElement('label');
-  label.innerText = taskText; //innerText encodes special characters, HTML does not.
+  label.innerText = taskText;
   label.className = 'task';
 
   const editInput = document.createElement('input');
