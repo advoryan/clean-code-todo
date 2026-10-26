@@ -88,10 +88,9 @@ const bindTaskEvents = function (taskListItem) {
   checkBox.onchange = toggleTaskCompletion;
 };
 
-for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
-  bindTaskEvents(incompleteTaskHolder.children[i]);
-}
-
-for (let i = 0; i < completedTasksHolder.children.length; i++) {
-  bindTaskEvents(completedTasksHolder.children[i]);
+for (const listItem of [
+  ...incompleteTaskHolder.children,
+  ...completedTasksHolder.children,
+]) {
+  bindTaskEvents(listItem);
 }
