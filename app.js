@@ -31,16 +31,6 @@ const createTaskElement = function (taskText) {
   return listItem;
 };
 
-const addTask = function () {
-  if (!newTaskInput.value) return;
-  const listItem = createTaskElement(newTaskInput.value);
-
-  incompleteTaskList.appendChild(listItem);
-  bindTaskEvents(listItem);
-
-  newTaskInput.value = '';
-};
-
 const toggleEditMode = function (listItem) {
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
@@ -67,8 +57,6 @@ const setTaskCompleted = function (listItem, isCompleted) {
   targetList.appendChild(listItem);
 };
 
-addTaskButton.addEventListener('click', addTask);
-
 const bindTaskEvents = function (listItem) {
   const checkbox = listItem.querySelector('input[type=checkbox]');
   const editButton = listItem.querySelector('button.edit');
@@ -78,6 +66,18 @@ const bindTaskEvents = function (listItem) {
   deleteButton.onclick = () => deleteTask(listItem);
   checkbox.onchange = () => setTaskCompleted(listItem, checkbox.checked);
 };
+
+const addTask = function () {
+  if (!newTaskInput.value) return;
+  const listItem = createTaskElement(newTaskInput.value);
+
+  incompleteTaskList.appendChild(listItem);
+  bindTaskEvents(listItem);
+
+  newTaskInput.value = '';
+};
+
+addTaskButton.addEventListener('click', addTask);
 
 for (const listItem of [
   ...incompleteTaskList.children,
